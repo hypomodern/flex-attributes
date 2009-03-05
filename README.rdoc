@@ -10,3 +10,5 @@ Primarily a code cleanup, different handling of versioned models, flex attribute
 There's also a companion plugin called flex_attributes_filtered, if you are interested in programmatically determining the valid attributes on a particular model.
 
 It lives at http://github.com/hypomodern/flex-attributes-filtered
+
+Thanks for all the work, Mr. Anderson.
