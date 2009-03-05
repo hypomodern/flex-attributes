@@ -1,0 +1,3 @@
+sqlite3:
+  :adapter: sqlite3
+  :dbfile: vendor/plugins/flex_attributes/spec/db/flex_attributes.sqlite3.db

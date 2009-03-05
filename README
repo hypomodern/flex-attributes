@@ -1,0 +1,12 @@
+= Flex Attributes
+
+Originally by Eric Anderson, some of that code still remains. If you're not into this version, check his out at http://rubyforge.org/projects/flex-attributes/
+See Hypomodern::FlexAttributes for usage information.
+
+= Changes in this version
+
+Primarily a code cleanup, different handling of versioned models, flex attributes are value objects.
+
+There's also a companion plugin called flex_attributes_filtered, if you are interested in programmatically determining the valid attributes on a particular model.
+
+It lives at http://github.com/hypomodern/flex-attributes-filtered
