@@ -139,7 +139,7 @@ module Hypomodern # :nodoc:
         options[:name_field] ||= 'name'
         options[:value_field] ||= 'value'
         options[:versioned] ||= false
-        options[:version_column] ||= options[:base_foreign_key].gsub("_id", "_version")
+        options[:version_column] ||= "version"
         options[:fields].collect! {|f| f.to_s} unless options[:fields].nil?
 
         # set class-level reader
@@ -259,7 +259,7 @@ module Hypomodern # :nodoc:
             value_field => value,
             name_field => attr_name
           }
-          parameters[self.flex_options[:version_column]] = self.version if self.flex_options[:versioned]
+          parameters[self.flex_options[:version_column]] = self.send(flex_options[:version_column]) if self.flex_options[:versioned]
           
           build_related_attr_field( parameters )
         end
@@ -269,7 +269,7 @@ module Hypomodern # :nodoc:
       def deletion_query(foreign_key)
         query = "#{foreign_key} = #{self.id || 'NULL'}"
         if self.flex_options[:versioned]
-          query += " AND #{self.flex_options[:version_column]} = #{self.version}"
+          query += " AND #{self.flex_options[:version_column]} = #{self.send(flex_options[:version_column])}"
         end
         query
       end
@@ -325,7 +325,7 @@ module Hypomodern # :nodoc:
       def related_flex_attr(attr)
           name_field = flex_options[:name_field]
           if flex_options[:versioned]
-            related_attrs.to_a.find {|r| r.send(name_field) == attr && r.send(flex_options[:version_column]) == self.version}
+            related_attrs.to_a.find {|r| r.send(name_field) == attr && r.send(flex_options[:version_column]) == self.send(flex_options[:version_column])}
           else
             related_attrs.to_a.find {|r| r.send(name_field) == attr}
           end

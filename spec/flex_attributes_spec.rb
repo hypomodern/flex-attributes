@@ -135,7 +135,7 @@ describe "Hypomodern::FlexAttributes" do
       @wiki_article.cold_fusion_invented_at = "Never"
       @wiki_article.save
       
-      WikiArticleAttribute.all(:conditions => "wiki_article_version <> 2").length.should == 1
+      WikiArticleAttribute.all(:conditions => "version <> 2").length.should == 1
     end
   end
   
